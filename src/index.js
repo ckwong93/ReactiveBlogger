@@ -16,10 +16,8 @@ ReactDOM.render(
     {/* <App /> */}
     <BrowserRouter>
       <Switch>
-        <div>
           <Route path="/posts/new" component={PostsNew} />
           <Route path="/" component={PostsIndex}/>
-        </div>
       </Switch>
     </BrowserRouter>
   </Provider>
