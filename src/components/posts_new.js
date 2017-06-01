@@ -13,12 +13,13 @@ class PostsNew extends Component {
           className="form-control"
           {...field.input}
         />
+        {field.meta.error}
       </div>
     )
   }
   render(){
     return(
-      <form>
+      <form onSubmit={}>
         <Field
           label="Title"
           name="title"
@@ -34,6 +35,9 @@ class PostsNew extends Component {
           name="content"
           component={this.renderField}
         />
+        <button type="submit" className="btn btn-primary">
+          Submit
+        </button>
       </form>
     )
   }
