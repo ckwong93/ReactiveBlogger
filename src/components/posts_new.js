@@ -3,9 +3,12 @@ import { Field, reduxForm } from 'redux-form';
 
 
 class PostsNew extends Component {
+
   renderField(field){
+    const { meta: { touched, error}} = field;
+    const className = `form-group ${touched && error ? 'has-danger': ''}`;
     return(
-      <div className="form-group">
+      <div className={className}>
         <label>{field.label}</label>
         <input
           label='Title'
@@ -13,7 +16,7 @@ class PostsNew extends Component {
           className="form-control"
           {...field.input}
         />
-        {field.meta.error}
+        <div className="text-help">{field.meta.touched ? field.meta.error : ''}</div>
       </div>
     )
   }
@@ -22,8 +25,8 @@ class PostsNew extends Component {
     console.log(values);
   }
   render(){
+    const { handleSubmit } = this.props;
     return(
-      const { handleSubmit } = this.props;
       <form onSubmit={handleSubmit(this.onSubmit.bind(this))}>
         <Field
           label="Title"
@@ -54,7 +57,7 @@ function validate(values){
     errors.title = "Enter a title";
   }
   if (!values.categories){
-    errors.categories = "Enter a categories";
+    errors.categories = "Enter a category";
   }
   if (!values.content){
     errors.content = "Enter a content";
